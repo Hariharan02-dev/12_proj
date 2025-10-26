@@ -1,0 +1,64 @@
+Arduino Pin Connections
+
+Motors via L298N:
+
+IN1 → D5
+
+IN2 → D4
+
+IN3 → D8
+
+IN4 → D12
+
+ENA → D3 (PWM for speed)
+
+ENB → D11 (PWM for speed)
+
+
+Front Obstacle Sensor (HC-SR04, fixed):
+
+Trig → D6
+
+Echo → D7
+
+VCC → 5V
+
+GND → GND
+
+
+Radar Sensor (HC-SR04 on servo):
+
+Trig → D9
+
+Echo → D10
+
+VCC → 5V
+
+GND → GND
+
+
+Radar Servo:
+
+Signal → D11 (PWM)
+
+VCC → 5V
+
+GND → GND
+
+
+OLED Display (I2C 128x64):
+
+SDA → A4
+
+SCL → A5
+
+VCC → 5V
+
+GND → GND
+
+
+Power:
+
+2S Li-ion Battery (7.4V) → Arduino VIN and L298N VIN
+
+GND → common ground for Arduino, L298N, sensors, and servo
