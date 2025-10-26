@@ -1,64 +1,86 @@
-Arduino Pin Connections
+Wiring Instructions
 
-Motors via L298N:
+1. Motors
 
-IN1 → D5
+Motor Driver L298N → Motors
 
-IN2 → D4
+IN1 → Arduino D5
 
-IN3 → D8
+IN2 → Arduino D4
 
-IN4 → D12
+IN3 → Arduino D8
 
-ENA → D3 (PWM for speed)
+IN4 → Arduino D12
 
-ENB → D11 (PWM for speed)
+ENA (left motors PWM) → Arduino D3
+
+ENB (right motors PWM) → Arduino D11
 
 
-Front Obstacle Sensor (HC-SR04, fixed):
+Motor Power: Connect to battery (7.4V) via L298N motor driver
 
-Trig → D6
+GND: Connect Arduino GND and battery GND to L298N GND
 
-Echo → D7
+
+
+---
+
+2. Radar Servo + Ultrasonic Sensor
+
+Radar Servo Signal → Arduino D6
+
+Radar Ultrasonic Trig → Arduino D9
+
+Radar Ultrasonic Echo → Arduino D10
+
+Radar VCC → 5V
+
+Radar GND → GND
+
+
+
+---
+
+3. Lever Switch (Start/Stop)
+
+One terminal → Arduino D2
+
+Other terminal → GND
+
+Use internal pull-up in code (INPUT_PULLUP)
+
+Lever OFF → HIGH (bot stops), Lever ON → LOW (bot runs)
+
+
+
+---
+
+4. OLED Display (Optional)
+
+SDA → Arduino A4
+
+SCL → Arduino A5
 
 VCC → 5V
 
 GND → GND
 
 
-Radar Sensor (HC-SR04 on servo):
 
-Trig → D9
+---
 
-Echo → D10
+5. Power
 
-VCC → 5V
+Arduino Vin / 5V powered from 2S Li-ion battery (through L298N 5V output or separate 5V regulator)
 
-GND → GND
+Motors powered via L298N motor driver 7.4V input
 
+Common GND shared across Arduino, motors, and sensor
 
-Radar Servo:
+6. Notes
 
-Signal → D11 (PWM)
+Make sure the radar servo has enough current (some small servos can run from Arduino 5V, but heavy ones may need separate 5V).
 
-VCC → 5V
+Processing visualization: Connect Arduino to PC via USB to get real-time radar data.
 
-GND → GND
-
-
-OLED Display (I2C 128x64):
-
-SDA → A4
-
-SCL → A5
-
-VCC → 5V
-
-GND → GND
-
-
-Power:
-
-2S Li-ion Battery (7.4V) → Arduino VIN and L298N VIN
-
-GND → common ground for Arduino, L298N, sensors, and servo
+OLED display is optional; it only shows closest object / status, not the full radar sweep.
